@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  sftp_server:
+    image: iankao/ubuntu18-pureftpd
+    container_name: pureftp
+    user: root
+    labels:
+      com.pureftp.description: "Pure-FTP service"
+      com.pureftp.component: "Pure-FTP"
+      com.pureftp.os: "Ubuntu 18.04"
+    restart: always
+    ports:
+      - "21:21"
+      - "9922:22"
+      - "40000-40200:40000-40200"
+    volumes:
+      - /docker/pure-ftp/etc:/etc
+      - /docker/pure-ftp/ftp-log:/var/log/pure-ftpd
+      - /docker/pure-ftp/ftpdata01:/ftpdata01
