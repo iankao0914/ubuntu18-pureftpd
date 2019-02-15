@@ -6,16 +6,16 @@ A Docker image used for FTP service.
 
 - make folder tree like below on your docker machine.
 
-/docker
-¢|¢w¢w /pure-ftp
-    ¢u¢w¢w docker-compose.yml
-    ¢u¢w¢w etc.tar
-    ¢u¢w¢w /ftpdata01
-    ¢u¢w¢w /ftp-log
-    ¢u¢w¢w /image
-    ¢x   ¢u¢w¢w Dockerfile
-    ¢x   ¢|¢w¢w supervisord.conf
-    ¢|¢w¢w README.md
+/docker/
+        pure-ftp/
+                 docker-compose.yml
+                 etc.tar
+                 ftpdata01/
+                 ftp-log/
+                 image/
+                       Dockerfile
+                       supervisord.conf
+                 README.md
 
 /ftpdata01 : You can mount a storage on this folder and store FTP files here.
 /ftp-log : The tranfer log will locate where.
@@ -35,7 +35,7 @@ All files can be found in [GitHub](https://github.com/iankao0914/ubuntu18-pureft
 
 - Run a container:
 ~~~~
-    docker-compose -f /docker/pure-ftp/docker-compose.yml up -d
+    # docker-compose -f /docker/pure-ftp/docker-compose.yml up -d
 ~~~~
 
 - Login container via SSH:
@@ -47,7 +47,7 @@ All files can be found in [GitHub](https://github.com/iankao0914/ubuntu18-pureft
 
 - Switch to root:
 ~~~~
-    sudo su -
+    # sudo su -
 ~~~~
 
 ## Create FTP account
@@ -55,9 +55,9 @@ All files can be found in [GitHub](https://github.com/iankao0914/ubuntu18-pureft
 Do this action in the container as root.
 - Create account "newuser" and change home folder to /ftpdata01
 ~~~~
-    useradd -g users -d "newuser" -s /bin/false newuser
-    mkdir -p /ftpdata01/newuser
-    chmod 700 /ftpdata01/newuser
-    chown newuser:users /ftpdata01/newuser
-    echo "newuser:password" | chpasswd
+    # useradd -g users -d "newuser" -s /bin/false newuser
+    # mkdir -p /ftpdata01/newuser
+    # chmod 700 /ftpdata01/newuser
+    # chown newuser:users /ftpdata01/newuser
+    # echo "newuser:password" | chpasswd
 ~~~~
