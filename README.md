@@ -6,16 +6,16 @@ A Docker image used for FTP service.
 
 - make folder tree like below on your docker machine.
 
-/docker/
-        pure-ftp/
-                 docker-compose.yml
-                 etc.tar
-                 ftpdata01/
-                 ftp-log/
-                 image/
-                       Dockerfile
-                       supervisord.conf
-                 README.md
+/docker<br /> 
+&emsp;&emsp;└── /pure-ftp<br /> 
+&emsp;&emsp;&emsp;&emsp;    ├── docker-compose.yml<br /> 
+&emsp;&emsp;&emsp;&emsp;    ├── etc.tar<br /> 
+&emsp;&emsp;&emsp;&emsp;    ├── /ftpdata01<br /> 
+&emsp;&emsp;&emsp;&emsp;    ├── /ftp-log<br /> 
+&emsp;&emsp;&emsp;&emsp;    ├── /image<br /> 
+&emsp;&emsp;&emsp;&emsp;    │&emsp;&emsp;&emsp;├── Dockerfile<br /> 
+&emsp;&emsp;&emsp;&emsp;    │&emsp;&emsp;&emsp;└── supervisord.conf<br /> 
+&emsp;&emsp;&emsp;&emsp;    └── README.md<br /> 
 
 /ftpdata01 : You can mount a storage on this folder and store FTP files here.
 /ftp-log : The tranfer log will locate where.
