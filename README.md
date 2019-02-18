@@ -17,9 +17,9 @@ A Docker image used for FTP service.
 &emsp;&emsp;&emsp;&emsp;    │&emsp;&emsp;&emsp;└── supervisord.conf<br /> 
 &emsp;&emsp;&emsp;&emsp;    └── README.md<br /> 
 
-/ftpdata01 : You can mount a storage on this folder and store FTP files here.
-/ftp-log : The tranfer log will locate where.
-/image : If you want to configure pure-ftp, you can modify the supervisord.conf and rebulid the image.
+/ftpdata01 : You can mount a storage on this folder and store FTP files here.<br />
+/ftp-log : The tranfer log will locate where.<br />
+/image : You can modify the supervisord.conf and and Dockerfile to rebulid the image here.
 
 - make sure you have installed [docker-compose](https://docs.docker.com/compose/install/)
 
@@ -55,9 +55,29 @@ All files can be found in [GitHub](https://github.com/iankao0914/ubuntu18-pureft
 Do this action in the container as root.
 - Create account "newuser" and change home folder to /ftpdata01
 ~~~~
-    # useradd -g users -d "newuser" -s /bin/false newuser
+    # useradd -g users -d "/ftpdata01/newuser" -s /bin/false newuser
     # mkdir -p /ftpdata01/newuser
     # chmod 700 /ftpdata01/newuser
     # chown newuser:users /ftpdata01/newuser
     # echo "newuser:password" | chpasswd
+~~~~
+
+## Pure-FTP configuration
+
+If you want to configure pure-ftpd, you can modify /docker/pure-ftp/etc/supervisor/conf.d/supervisord.conf
+
+- Passive mode
+~~~~
+    -P [your IP] -p [40000:40200]
+~~~~
+
+- TLS certificate<br />
+Put you pem file to /docker/pure-ftp/etc/ssl/private/
+~~~~
+    -Y 1 -2 /etc/ssl/private/cert.pem
+~~~~
+
+- You can see other settings with this command in the container.
+~~~~
+    # pure-ftpd --help
 ~~~~
