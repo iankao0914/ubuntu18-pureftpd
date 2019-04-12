@@ -40,7 +40,7 @@ All files can be found in [GitHub](https://github.com/iankao0914/ubuntu18-pureft
 
 - Login container via SSH:
 ~~~~
-    Account: ftpdmin
+    Account: ftpadmin
     Password:changeme
     Port:9922
 ~~~~

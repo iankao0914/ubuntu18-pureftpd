@@ -3,6 +3,7 @@ services:
   sftp_server:
     image: iankao/ubuntu18-pureftpd
     container_name: pureftp
+    hostname: pureftp
     user: root
     labels:
       com.pureftp.description: "Pure-FTP service"
