@@ -23,6 +23,7 @@ RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak && \
     iputils-ping \
     traceroute \
     rsyslog \
+    ftp \
     dpkg-dev \
     debhelper \
     openbsd-inetd \
